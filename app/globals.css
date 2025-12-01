@@ -159,7 +159,7 @@
     @apply border-border outline-ring/50;
   }
    body {
-     background: radial-gradient(circle, #31006f 0%, #ff8672 50%, #31006f 100%);
+     background: radial-gradient(ellipse at top, #31006f 0%, rgba(255, 134, 114, 0.45) 50%, #31006f 100%);
      background-attachment: fixed;
      background-size: cover;
      color: #ffffff;

@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 
 export default function Home() {
   return (
-    <main className="min-h-screen selection:bg-purple-200/30 text-white overflow-x-hidden">
+    <main className="min-h-screen  text-white overflow-x-hidden">
       <Navbar />
 
       <section className="bg-white">
@@ -46,7 +46,7 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-slate-900">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#31006F]">
                 ¿Listo para hacer crecer tu negocio?
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-slate-900 max-w-2xl mx-auto px-4">
