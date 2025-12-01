@@ -221,4 +221,94 @@
   .btn-primary:hover {
     transform: translateY(-4px);
   }
+
+  /* Hero background responsive */
+  .hero-background {
+    background-image: url('/FONDO1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* Mobile: center center para mostrar toda la imagen */
+    background-position: center center;
+  }
+
+  /* Tablet: ligeramente a la derecha */
+  @media (min-width: 768px) {
+    .hero-background {
+      background-position: center 40%;
+    }
+  }
+
+  /* Desktop: completamente a la derecha */
+  @media (min-width: 1024px) {
+    .hero-background {
+      background-position: center right;
+    }
+  }
+
+  /* CTA background responsive */
+  .cta-background {
+    background-image: url('/cta-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  .cta-overlay {
+    background-image: url('/callToAction1.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  /* Tablet: ajuste de posición */
+  @media (min-width: 768px) {
+    .cta-background {
+      background-position: center 40%;
+    }
+    .cta-overlay {
+      background-position: center 40%;
+    }
+  }
+
+  /* Desktop: posición optimizada */
+  @media (min-width: 1024px) {
+    .cta-background {
+      background-position: center center;
+    }
+    .cta-overlay {
+      background-position: center center;
+    }
+  }
+
+  /* About page images - responsive */
+  .about-image-1,
+  .about-image-2,
+  .about-image-3 {
+    background-image: url('/placeholder.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+
+  /* Mobile: centro */
+  @media (max-width: 767px) {
+    .about-image-1,
+    .about-image-2,
+    .about-image-3 {
+      background-position: center center;
+    }
+  }
+
+  /* Tablet y Desktop: optimizado */
+  @media (min-width: 768px) {
+    .about-image-1 {
+      background-position: center 30%;
+    }
+    .about-image-2 {
+      background-position: center 40%;
+    }
+    .about-image-3 {
+      background-position: center 50%;
+    }
+  }
 }

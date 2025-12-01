@@ -1,36 +1,44 @@
-"use client"
+"use client";
 
-import { GlassCard } from "@/components/ui/glass-card"
-import { motion } from "framer-motion"
-import { Code2, Palette, Rocket, Smartphone } from "lucide-react"
+import { GlassCard } from "@/components/ui/glass-card";
+import { motion } from "framer-motion";
+import { Code2, Palette, Rocket, Smartphone } from "lucide-react";
 // SectionWrapper removed — using plain sections
 
 const services = [
   {
-    icon: <Palette className="w-8 h-8" style={{ color: "white" }} />,
+    num: "01",
+    icon: Palette,
     title: "Campañas en Meta (Facebook & Instagram)",
-    description: "Diseño, segmentación y optimización de campañas enfocadas en generar leads y conversiones medibles.",
+    description:
+      "Diseño, segmentación y optimización de campañas enfocadas en generar leads y conversiones medibles.",
   },
   {
-    icon: <Smartphone className="w-8 h-8" style={{ color: "white" }} />,
+    num: "02",
+    icon: Smartphone,
     title: "Gestión de Leads & CRM",
-    description: "Integración con nuestro sistema propio para capturar, calificar y nutrir leads hasta convertirlos en clientes.",
+    description:
+      "Integración con nuestro sistema propio para capturar, calificar y nutrir leads hasta convertirlos en clientes.",
   },
   {
-    icon: <Code2 className="w-8 h-8" style={{ color: "white" }} />,
+    num: "03",
+    icon: Code2,
     title: "Reporting y Analytics",
-    description: "Informes claros y métricas accionables para medir ROAS, CPA y optimizar la inversión publicitaria.",
+    description:
+      "Informes claros y métricas accionables para medir ROAS, CPA y optimizar la inversión publicitaria.",
   },
   {
-    icon: <Rocket className="w-8 h-8" style={{ color: "white" }} />,
+    num: "04",
+    icon: Rocket,
     title: "Escala & Growth",
-    description: "Estrategias para aumentar presupuesto de campañas eficientes y escalar resultados sin perder rentabilidad.",
+    description:
+      "Estrategias para aumentar presupuesto de campañas eficientes y escalar resultados sin perder rentabilidad.",
   },
-]
+];
 
 export function Services() {
   return (
-    <section className="py-32 overflow-hidden bg-[#31006F]">
+    <section className="py-32 overflow-hidden  rounded-t-4xl relative">
       {/* Animated Particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[15%] left-[25%] w-3 h-3 rounded-full bg-[#ff8672]/30 animate-float" />
@@ -46,13 +54,13 @@ export function Services() {
       </div>
 
       <section id="services" className="relative z-10">
-        <div className="container mx-auto px-6 w-9/12 md:w-8/12 lg:w-7/12 xl:w-7/12">
-          <div className="mb-20">
+        <div className="container mx-auto px-4 sm:px-6 w-full sm:w-11/12 md:w-9/12 lg:w-8/12 xl:w-7/12">
+          <div className="mb-20 text-center">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-bold mb-6 text-white"
+              className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#31006F]"
             >
               Nuestra experiencia
             </motion.h2>
@@ -60,42 +68,47 @@ export function Services() {
               initial={{ opacity: 0, width: 0 }}
               whileInView={{ opacity: 1, width: "100px" }}
               viewport={{ once: true }}
-              className="h-1 rounded-full bg-gradient-to-r from-[#FF8672] to-white"
+              className="h-1 rounded-full bg-gradient-to-r from-[#FF8672] to-white mx-auto"
             />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((service, index) => {
-              const isSalmon = index % 2 === 0
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <div className={`relative overflow-hidden h-full flex flex-col justify-between group p-8 rounded-2xl transition-all ${isSalmon
-                    ? 'bg-gradient-to-br from-[#FF8672] to-[#FF8672]/80 border border-[#FF8672]/20 hover:border-white/40'
-                    : 'bg-gradient-to-br from-[#31006F] to-[#31006F]/80 border border-white/20 hover:border-white/40'
-                    }`}>
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="relative">
-                      <div className="mb-6 p-4 rounded-2xl w-fit bg-white/20 backdrop-blur-sm group-hover:shadow-lg transition-all">
-                        <div className="w-8 h-8 text-white">
-                          {service.icon}
-                        </div>
-                      </div>
-                      <h3 className="text-2xl font-semibold mb-4 text-white">{service.title}</h3>
-                      <p className="text-white/90 leading-relaxed">{service.description}</p>
-                    </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.12 }}
+              >
+                <div className="relative h-full rounded-[28px] border border-[#31006F]/20 bg-[#31006F]/85 p-8 sm:p-10 shadow-[0_20px_50px_rgba(49,0,111,0.4)] text-white overflow-hidden backdrop-blur-xl">
+                  {/* Número grande en la esquina superior derecha */}
+                  <div className="absolute right-6 top-6 text-[120px] sm:text-[140px] font-bold text-white/[0.03] select-none leading-none">
+                    {service.num}
                   </div>
-                </motion.div>
-              )
-            })}
+
+                  <div className="relative z-10">
+                    {/* Icono */}
+                    <div className="mb-6">
+                      <service.icon className="h-7 w-7 sm:h-8 sm:w-8 text-white/80 stroke-[1.5]" />
+                    </div>
+
+                    {/* Título */}
+                    <h3 className="text-2xl sm:text-3xl font-semibold mb-4 tracking-tight text-white">
+                      {service.title}
+                    </h3>
+
+                    {/* Descripción */}
+                    <p className="text-base sm:text-lg text-white/70 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
     </section>
-  )
+  );
 }

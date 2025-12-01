@@ -91,34 +91,19 @@ export default function About() {
               <div className="grid grid-cols-2 gap-4 h-full">
                 {/* Large image - bottom left */}
                 <div className="row-span-2 relative rounded-lg overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage: "url('/placeholder.jpg')",
-                    }}
-                  />
+                  <div className="absolute inset-0 about-image-1" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
 
                 {/* Top right - team collaboration */}
                 <div className="relative rounded-lg overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage: "url('/placeholder.jpg')",
-                    }}
-                  />
+                  <div className="absolute inset-0 about-image-2" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
 
                 {/* Bottom right - team celebration */}
                 <div className="relative rounded-lg overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{
-                      backgroundImage: "url('/placeholder.jpg')",
-                    }}
-                  />
+                  <div className="absolute inset-0 about-image-3" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                 </div>
               </div>
