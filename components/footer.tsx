@@ -3,7 +3,7 @@ import { Instagram } from "lucide-react"
 
 export function Footer() {
   return (
-    <footer className="relative pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-10 md:pb-12 overflow-hidden bg-gradient-to-t from-purple-50/40 to-transparent text-white">
+    <footer className="relative pt-20 sm:pt-24 md:pt-32 pb-8 sm:pb-10 md:pb-12 overflow-hidden text-white" style={{ background: 'radial-gradient(ellipse at top, #31006F 0%, rgba(255, 134, 114, 0.45) 50%, #31006F 100%)', backgroundAttachment: 'fixed' }}>
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-200/40 to-transparent" />
 
       <div className="container mx-auto px-4 sm:px-6 relative z-10">
@@ -67,10 +67,10 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between pt-6 sm:pt-8 border-t border-purple-200/30 text-xs sm:text-sm text-white gap-4 sm:gap-0">
           <p className="text-center sm:text-left">&copy; 2025 Dualtti. Todos los derechos reservados.</p>
           <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Política de Privacidad
             </Link>
-            <Link href="#" className="hover:text-white transition-colors">
+            <Link href="/terms-of-service" className="hover:text-white transition-colors">
               Términos de Servicio
             </Link>
           </div>

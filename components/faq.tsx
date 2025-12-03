@@ -30,7 +30,7 @@ const faqs = [
 
 export function Faq() {
   return (
-    <section className="py-16 sm:py-20 md:py-24">
+    <section className="py-16 sm:py-20 md:py-24" style={{ background: 'radial-gradient(ellipse at top, #31006F 0%, rgba(255, 134, 114, 0.45) 50%, #31006F 100%)', backgroundAttachment: 'fixed' }}>
       <div className="container mx-auto px-4 sm:px-6 w-full sm:w-11/12 md:w-9/12 lg:w-8/12 xl:w-7/12">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 items-start">
           <motion.div

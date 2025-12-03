@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Syne } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/theme-provider";
+import { PageLoader } from "@/components/page-loader";
 
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-sans" });
+const syne = Syne({ subsets: ["latin"], variable: "--font-syne" });
 
 export const metadata: Metadata = {
   title: "Dualtti | Agencia de Meta Ads en Paraguay - Más Clientes, Más Ventas",
@@ -24,11 +27,8 @@ export const metadata: Metadata = {
     description: "Agencia paraguaya especializada en convertir inversión publicitaria en clientes y ventas medibles.",
   },
   icons: {
-    icon: [
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/icon-light-32x32.png", sizes: "32x32" },
-    ],
-    apple: "/apple-icon.png",
+    icon: "/logo-round.png",
+    apple: "/logo-round.png",
   },
 };
 
@@ -40,9 +40,18 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={cn("min-h-screen font-sans antialiased", outfit.variable)}
+        className={cn("min-h-screen font-sans antialiased", outfit.variable, syne.variable)}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <PageLoader>
+            {children}
+          </PageLoader>
+        </ThemeProvider>
       </body>
     </html>
   );

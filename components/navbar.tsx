@@ -5,20 +5,29 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { ModeToggle } from "@/components/mode-toggle";
 
-function DualttiLogo() {
+import Image from "next/image";
+
+function DualttiLogo({ isScrolled }: { isScrolled: boolean }) {
   return (
     <span className="flex items-center gap-2 sm:gap-3">
-      <span className="relative flex h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 shrink-0 items-center justify-center">
-        <span className="absolute inset-0 rounded-full bg-gradient-to-br from-[#240048] via-[#3c068a] to-[#5b18b2] shadow-[0_15px_30px_rgba(34,22,74,0.35)]" />
-        <span className="relative h-[72%] w-[72%]">
-          <span className="absolute left-0 top-0 h-6 w-2.5 sm:h-7 sm:w-2.5 md:h-8 md:w-3 rounded-full bg-[#FF8C73]" />
-          <span className="absolute right-0 bottom-0 h-6 w-2.5 sm:h-7 sm:w-2.5 md:h-8 md:w-3 rounded-full bg-[#FFD0C2] origin-bottom-left transform rotate-[36deg]" />
-        </span>
-      </span>
-      <span className="flex items-center gap-1.5 sm:gap-2 text-lg sm:text-xl md:text-2xl font-semibold tracking-tight text-white">
+      <div className="relative h-9 w-9 sm:h-10 sm:w-10 md:h-11 md:w-11 shrink-0">
+        <Image
+          src="/logo.png"
+          alt="Dualtti Logo"
+          fill
+          className="object-contain rounded-full"
+          sizes="(max-width: 768px) 40px, 44px"
+        />
+      </div>
+      <span
+        className={cn(
+          "flex items-center gap-1.5 sm:gap-2 text-lg sm:text-xl md:text-2xl font-semibold tracking-tight transition-colors duration-300",
+          isScrolled ? "text-[#31006F] dark:text-white" : "text-white"
+        )}
+      >
         Dualtti
-        <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-[#FF8C73] shadow-[0_5px_12px_rgba(0,0,0,0.25)]" />
       </span>
     </span>
   );
@@ -53,17 +62,23 @@ export function Navbar() {
       <div
         className={cn(
           "relative max-w-6xl mx-auto flex items-center justify-between gap-4 sm:gap-6 px-4 sm:px-6 md:px-8 py-3 sm:py-4 transition-all duration-300",
-          "rounded-[24px] sm:rounded-[32px] border border-white/40 bg-white/25 backdrop-blur-3xl",
+          "rounded-[24px] sm:rounded-[32px] border",
           "shadow-[0_25px_80px_rgba(15,15,15,0.18)]",
-          isScrolled ? "scale-95" : "scale-100"
+          isScrolled
+            ? "scale-95 bg-white/90 dark:bg-[#343232]/90 border-white/60 dark:border-white/10 backdrop-blur-xl shadow-lg"
+            : "scale-100 bg-white/10 dark:bg-black/20 border-white/20 dark:border-white/10 backdrop-blur-md"
         )}
       >
-        <span className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[24px] sm:rounded-[32px]">
-          <span className="absolute -left-12 top-1/2 h-52 w-52 -translate-y-1/2 rounded-full bg-white/60 blur-[120px]" />
-          <span className="absolute right-6 top-0 h-32 w-32 rounded-full bg-white/50 blur-[80px]" />
-        </span>
+        {/* Decorative background elements - only visible when NOT scrolled for cleaner look on scroll */}
+        {!isScrolled && (
+          <span className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-[24px] sm:rounded-[32px]">
+            <span className="absolute -left-12 top-1/2 h-52 w-52 -translate-y-1/2 rounded-full bg-white/20 blur-[120px]" />
+            <span className="absolute right-6 top-0 h-32 w-32 rounded-full bg-white/10 blur-[80px]" />
+          </span>
+        )}
+
         <Link href="/" className="relative z-10">
-          <DualttiLogo />
+          <DualttiLogo isScrolled={isScrolled} />
         </Link>
 
         <div className="hidden lg:flex items-center gap-4 xl:gap-6">
@@ -71,25 +86,37 @@ export function Navbar() {
             <Link
               key={link.name}
               href={link.href}
-              className="text-sm xl:text-base font-medium text-white/80 hover:text-white transition-colors flex items-center gap-1 whitespace-nowrap"
+              className={cn(
+                "text-sm xl:text-base font-medium transition-colors flex items-center gap-1 whitespace-nowrap",
+                isScrolled
+                  ? "text-slate-600 hover:text-[#31006F] dark:text-slate-300 dark:hover:text-white"
+                  : "text-white/90 hover:text-white"
+              )}
             >
               {link.name}
             </Link>
           ))}
+          <ModeToggle />
         </div>
 
-        <button
-          className="lg:hidden relative z-10 text-white"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          aria-expanded={isMobileMenuOpen}
-        >
-          {isMobileMenuOpen ? (
-            <X className="h-5 w-5 sm:h-6 sm:w-6" />
-          ) : (
-            <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
-          )}
-        </button>
+        <div className="flex items-center gap-4 lg:hidden">
+          <ModeToggle />
+          <button
+            className={cn(
+              "relative z-10 transition-colors",
+              isScrolled ? "text-[#31006F] dark:text-white" : "text-white"
+            )}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-5 w-5 sm:h-6 sm:w-6" />
+            ) : (
+              <Menu className="h-5 w-5 sm:h-6 sm:w-6" />
+            )}
+          </button>
+        </div>
       </div>
 
       {isMobileMenuOpen && (
@@ -107,7 +134,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed top-24 left-4 right-4 sm:left-6 sm:right-6 md:left-auto md:right-6 md:w-80 bg-gradient-to-b from-[#31006F] to-[#31006F]/95 backdrop-blur-3xl z-50 rounded-3xl border border-white/20 shadow-2xl lg:hidden overflow-hidden"
+            className="fixed top-24 left-4 right-4 sm:left-6 sm:right-6 md:left-auto md:right-6 md:w-80 bg-white backdrop-blur-3xl z-50 rounded-3xl border border-white/20 shadow-2xl lg:hidden overflow-hidden"
           >
             <div className="flex flex-col p-6">
               {navLinks.map((link, idx) => (
@@ -116,8 +143,8 @@ export function Navbar() {
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
-                    "py-4 px-4 text-lg font-medium text-white hover:text-white/70 hover:bg-white/5 rounded-xl transition-all flex items-center justify-between",
-                    idx !== navLinks.length - 1 && "border-b border-white/10"
+                    "py-4 px-4 text-lg font-medium text-slate-700 hover:text-[#31006F] hover:bg-slate-50 rounded-xl transition-all flex items-center justify-between",
+                    idx !== navLinks.length - 1 && "border-b border-slate-100"
                   )}
                 >
                   <span>{link.name}</span>
