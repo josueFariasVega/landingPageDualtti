@@ -5,7 +5,11 @@
       "Bash(lsof:*)",
       "Bash(xargs:*)",
       "Bash(npm run build:*)",
-      "Bash(npx next lint:*)"
+      "Bash(npx next lint:*)",
+      "Bash(du:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm install:*)",
+      "Bash(find:*)"
     ],
     "deny": [],
     "ask": []

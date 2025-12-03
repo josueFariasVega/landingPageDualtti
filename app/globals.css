@@ -84,6 +84,7 @@
 
 @theme inline {
   --font-sans: var(--font-sans);
+  --font-syne: var(--font-syne);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -158,12 +159,20 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    scroll-behavior: smooth;
+  }
    body {
      background: radial-gradient(ellipse at top, #31006f 0%, rgba(255, 134, 114, 0.45) 50%, #31006f 100%);
      background-attachment: fixed;
      background-size: cover;
      color: #ffffff;
      position: relative;
+   }
+
+   .dark body {
+     background: radial-gradient(ellipse at top, #0f0024 0%, #1a003d 50%, #0f0024 100%);
+     color: #f8f6ff;
    }
 
    body::before {
@@ -222,28 +231,7 @@
     transform: translateY(-4px);
   }
 
-  /* Hero background responsive */
-  .hero-background {
-    background-image: url('/FONDO1.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    /* Mobile: center center para mostrar toda la imagen */
-    background-position: center center;
-  }
 
-  /* Tablet: ligeramente a la derecha */
-  @media (min-width: 768px) {
-    .hero-background {
-      background-position: center 40%;
-    }
-  }
-
-  /* Desktop: completamente a la derecha */
-  @media (min-width: 1024px) {
-    .hero-background {
-      background-position: center right;
-    }
-  }
 
   /* CTA background responsive */
   .cta-background {
